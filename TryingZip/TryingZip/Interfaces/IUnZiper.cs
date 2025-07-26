@@ -1,6 +1,6 @@
 ﻿namespace TryingZip;
 
-public interface IFileUnZiper
+public interface IUnZiper
 {
     public void UnZip(ExistingPath pathToZip, ExistingDirectory destinationDirectory);
 }

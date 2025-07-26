@@ -15,7 +15,7 @@ public class Program
         var source = ExistingDirectory.Create(Path.Combine(desktop, "Source"));
         var destination = ExistingDirectory.Create(Path.Combine(desktop, "FolderDesktop"));
 
-        var zipFiles = GetAllWithExtension(source, new FileExtension("7z"));
+        var zipFiles = GetAllWithExtension(source, new FileExtension(SupportedZipExtensions.SevenZ));
         bigUnZiper.UnzipAll(zipFiles, destination);
     }
 
@@ -26,7 +26,7 @@ public class Program
 
     public static Container RegisterAll() =>
         new SimpleInjectorContainerBuilder()
-        .Register<IFileUnZiper, SevenZUnZiper>()
+        .Register<IUnZiper, SevenZUnZiper>()
         .Register<IBigUnZiper, BigUnZiper>()
         .Build();
 }

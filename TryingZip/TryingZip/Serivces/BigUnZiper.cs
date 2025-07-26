@@ -1,6 +1,6 @@
 ﻿namespace TryingZip.Serivces;
 
-public class BigUnZiper(IFileUnZiper _unZiper) : IBigUnZiper
+public class BigUnZiper(IUnZiper _unZiper) : IBigUnZiper
 {
     public void UnzipAll(List<ExistingPath> zipFiles, ExistingDirectory unzipLocation)
     {

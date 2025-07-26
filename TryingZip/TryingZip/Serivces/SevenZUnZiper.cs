@@ -4,7 +4,7 @@ using SharpCompress.Common;
 
 namespace TryingZip.Serivces;
 
-public class SevenZUnZiper : IFileUnZiper
+public class SevenZUnZiper : IUnZiper
 {
     public void UnZip(ExistingPath pathToZip, ExistingDirectory destinationDirectory)
     {

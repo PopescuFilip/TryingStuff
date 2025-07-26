@@ -18,7 +18,7 @@ public readonly struct FileExtension
     }
 
     public static implicit operator string(FileExtension e) => e._value;
-    public static implicit operator FileExtension(string extension) => new(extension);
+    public static explicit operator FileExtension(string extension) => new(extension);
 
     public WildcardExtension ToWildcard() => new('*' + _value);
 }

@@ -9,7 +9,7 @@ public readonly struct ExistingFile(string filePath)
     public ExistingFile() : this(string.Empty) {}
 
     public static implicit operator string(ExistingFile e) => e._filePath;
-    public static implicit operator ExistingFile(string filePath) => new(filePath);
+    public static explicit operator ExistingFile(string filePath) => new(filePath);
 
     public string GetName() => Path.GetFileNameWithoutExtension(_filePath);
 }
