@@ -28,5 +28,5 @@ public class Program
         new SimpleInjectorContainerBuilder()
         .Register<IFileUnZiper, SevenZUnZiper>()
         .Register<IBigUnZiper, BigUnZiper>()
-        .VerifyAndGetContainer();
+        .Build();
 }

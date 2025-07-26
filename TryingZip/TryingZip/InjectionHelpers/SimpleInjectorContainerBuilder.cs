@@ -26,7 +26,7 @@ public class SimpleInjectorContainerBuilder
         return this;
     }
 
-    public Container VerifyAndGetContainer()
+    public Container Build()
     {
         _container.Verify();
         return _container;

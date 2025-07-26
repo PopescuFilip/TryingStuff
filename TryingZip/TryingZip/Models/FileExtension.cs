@@ -8,13 +8,13 @@ public readonly struct FileExtension
 
     public FileExtension(string extension)
     {
-        var nonEmptyString = new NonEmptyString(extension);
+        ArgumentException.ThrowIfNullOrWhiteSpace(extension, nameof(extension));
 
-        nonEmptyString = nonEmptyString[0] == '.'
-            ? nonEmptyString
-            : new('.' + nonEmptyString);
+        extension = extension[0] == '.'
+            ? extension
+            : '.' + extension;
 
-        _value = new(nonEmptyString);
+        _value = new(extension);
     }
 
     public static implicit operator string(FileExtension e) => e._value;
