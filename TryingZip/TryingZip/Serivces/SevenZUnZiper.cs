@@ -1,7 +1,6 @@
 ﻿using SharpCompress.Archives;
 using SharpCompress.Archives.SevenZip;
 using SharpCompress.Common;
-using TryingZip.Models;
 
 namespace TryingZip.Serivces;
 

@@ -1,6 +1,4 @@
-﻿using TryingZip.Models;
-
-namespace TryingZip.Serivces;
+﻿namespace TryingZip.Serivces;
 
 public class DirectoryCreator : IDirectoryCreator
 {

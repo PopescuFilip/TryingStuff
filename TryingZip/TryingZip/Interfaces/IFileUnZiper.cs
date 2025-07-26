@@ -1,6 +1,4 @@
-﻿using TryingZip.Models;
-
-namespace TryingZip;
+﻿namespace TryingZip;
 
 public interface IFileUnZiper
 {

@@ -1,5 +1,4 @@
 ﻿using System.IO.Compression;
-using TryingZip.Models;
 
 namespace TryingZip.Serivces;
 
