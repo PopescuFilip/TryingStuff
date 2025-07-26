@@ -2,5 +2,5 @@
 
 public interface IBigUnZiper
 {
-    public List<ExistingDirectory> UnzipAll(List<ExistingFile> zipFiles, ExistingDirectory unzipLocation);
+    public void UnzipAll(List<ExistingPath> zipFiles, ExistingDirectory unzipLocation);
 }

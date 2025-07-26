@@ -1,12 +1,18 @@
 ﻿namespace TryingZip;
 
-public readonly struct ExistingDirectory(string directoryPath)
+public readonly struct ExistingDirectory
 {
-    private readonly NonEmptyString _directoryPath = Directory.Exists(directoryPath)
-        ? new(directoryPath)
-        : throw new IOObjectCreationException($"Inexistent directory", directoryPath);
+    private readonly NonEmptyString _directoryPath;
 
-    public ExistingDirectory() : this(string.Empty) {}
+    public ExistingDirectory() : this(new(string.Empty)) {}
+
+    public static ExistingDirectory Create(string directoryPath)
+    {
+        Directory.CreateDirectory(directoryPath);
+        return new ExistingDirectory(directoryPath);
+    }
+
+    private ExistingDirectory(string directoryPath) { _directoryPath = new(directoryPath); }
 
     public static implicit operator string(ExistingDirectory e) => e._directoryPath;
 

@@ -4,20 +4,17 @@ using SharpCompress.Common;
 
 namespace TryingZip.Serivces;
 
-public class SevenZUnZiper(IDirectoryCreator _directoryCreator) : IFileUnZiper
+public class SevenZUnZiper : IFileUnZiper
 {
-    public ExistingDirectory UnZip(ExistingFile file, ExistingDirectory destination)
+    public void UnZip(ExistingPath pathToZip, ExistingDirectory destinationDirectory)
     {
-        var actualDestination = _directoryCreator.Create(Path.Combine(destination, file.GetName()));
-
-        using var archive = SevenZipArchive.Open(file);
+        using var archive = SevenZipArchive.Open(pathToZip);
         foreach (var entry in archive.Entries)
         {
-            entry.WriteToDirectory(actualDestination, new ExtractionOptions
+            entry.WriteToDirectory(destinationDirectory, new ExtractionOptions
             {
                 ExtractFullPath = true
             });
         }
-        return actualDestination;
     }
 }

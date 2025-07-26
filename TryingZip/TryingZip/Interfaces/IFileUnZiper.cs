@@ -2,5 +2,5 @@
 
 public interface IFileUnZiper
 {
-    public ExistingDirectory UnZip(ExistingFile file, ExistingDirectory destination);
+    public void UnZip(ExistingPath pathToZip, ExistingDirectory destinationDirectory);
 }

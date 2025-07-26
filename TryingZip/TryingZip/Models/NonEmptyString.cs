@@ -6,5 +6,8 @@ public readonly record struct NonEmptyString(string Value)
         ? Value
         : throw new ArgumentException($"string cannot be null or whitespace");
 
+    public char this[int index] => Value[index];
+
     public static implicit operator string (NonEmptyString nonEmptyString) => nonEmptyString.Value;
+    public static explicit operator NonEmptyString (string @string) => new(@string);
 }
