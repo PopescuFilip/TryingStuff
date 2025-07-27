@@ -1,6 +1,6 @@
 ﻿using SimpleInjector;
 
-namespace TryingZip.InjectionHelpers;
+namespace UsefullStuff;
 
 public class SimpleInjectorContainerBuilder
 {

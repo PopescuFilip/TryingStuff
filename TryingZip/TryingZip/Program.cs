@@ -1,6 +1,6 @@
 ﻿using SimpleInjector;
-using TryingZip.InjectionHelpers;
 using TryingZip.Serivces;
+using UsefullStuff;
 
 namespace TryingZip;
 
@@ -15,12 +15,12 @@ public class Program
         var source = ExistingDirectory.Create(Path.Combine(desktop, "Source"));
         var destination = ExistingDirectory.Create(Path.Combine(desktop, "FolderDesktop"));
 
-        var zipFiles = GetAllWithExtension(source, new FileExtension(SupportedZipExtensions.SevenZ));
+        var zipFiles = GetAllWithExtension(source, SupportedZipExtensions.SevenZ);
         bigUnZiper.UnzipAll(zipFiles, destination);
     }
 
     public static List<ExistingPath> GetAllWithExtension(ExistingDirectory existingDirectory, FileExtension extension) =>
-        Directory.EnumerateFiles(existingDirectory, extension.ToWildcard(), SearchOption.AllDirectories)
+        Directory.EnumerateFiles(existingDirectory, extension.WildcardExtension, SearchOption.AllDirectories)
         .Select(f => new ExistingPath(f))
         .ToList();
 

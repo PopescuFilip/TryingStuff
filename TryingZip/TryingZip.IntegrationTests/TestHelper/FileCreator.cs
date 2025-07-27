@@ -1,4 +1,6 @@
-﻿namespace TryingZip.IntegrationTests.TestHelper;
+﻿using UsefullStuff;
+
+namespace TryingZip.IntegrationTests.TestHelper;
 
 public class FileCreator
 {

@@ -1,4 +1,4 @@
-﻿namespace TryingZip;
+﻿namespace UsefullStuff;
 
 public record NonEmptyString(string Value)
 {
@@ -8,6 +8,6 @@ public record NonEmptyString(string Value)
 
     public char this[int index] => Value[index];
 
-    public static implicit operator string (NonEmptyString nonEmptyString) => nonEmptyString.Value;
-    public static explicit operator NonEmptyString (string @string) => new(@string);
+    public static implicit operator string(NonEmptyString nonEmptyString) => nonEmptyString.Value;
+    public static explicit operator NonEmptyString(string @string) => new(@string);
 }

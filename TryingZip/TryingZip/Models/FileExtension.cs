@@ -1,31 +1,22 @@
-﻿namespace TryingZip;
+﻿using UsefullStuff;
 
-public readonly struct FileExtension
+namespace TryingZip;
+
+public readonly record struct FileExtension(NonEmptyString Extension)
 {
-    private readonly NonEmptyString _value;
+    public NonEmptyString Extension { get; init; } = Extension[0] == '.'
+            ? Extension
+            : new('.' + Extension);
+    public WildcardExtension WildcardExtension { get; init; } = new(new('*' + Extension));
 
-    public FileExtension() : this(string.Empty) {}
+    public static implicit operator string(FileExtension e) => e.Extension;
+    public static explicit operator FileExtension(string extension) => new((NonEmptyString)extension);
 
-    public FileExtension(string extension)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(extension, nameof(extension));
-
-        extension = extension[0] == '.'
-            ? extension
-            : '.' + extension;
-
-        _value = new(extension);
-    }
-
-    public static implicit operator string(FileExtension e) => e._value;
-    public static explicit operator FileExtension(string extension) => new(extension);
-
-    public WildcardExtension ToWildcard() => new('*' + _value);
 }
 
-public readonly struct WildcardExtension(string value)
+public readonly record struct WildcardExtension(NonEmptyString Value)
 {
-    private readonly NonEmptyString _value = new(value);
+    public static readonly WildcardExtension Any = new(new("*"));
 
-    public static implicit operator string(WildcardExtension e) => e._value;
+    public static implicit operator string(WildcardExtension e) => e.Value;
 }

@@ -1,4 +1,6 @@
-﻿namespace TryingZip;
+﻿using UsefullStuff;
+
+namespace TryingZip;
 
 public record ExistingPath(string Path)
 {

@@ -2,7 +2,7 @@
 
 public static class SupportedZipExtensions
 {
-    public static readonly FileExtension SevenZ = new("7z");
-    public static readonly FileExtension IfcZip = new("IFCZIP");
-    public static readonly FileExtension Zip = new("Zip");
+    public static readonly FileExtension SevenZ = new(new("7z"));
+    public static readonly FileExtension IfcZip = new(new("IFCZIP"));
+    public static readonly FileExtension Zip = new(new("Zip"));
 }

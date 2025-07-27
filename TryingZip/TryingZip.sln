@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryingZip", "TryingZip\Tryi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryingZip.IntegrationTests", "TryingZip.IntegrationTests\TryingZip.IntegrationTests.csproj", "{BE03C66E-EAEB-4514-9812-31E25AFB132D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsefullStuff", "..\UsefullStuff\UsefullStuff\UsefullStuff.csproj", "{D240865A-65CA-7484-56B9-49204A9CF257}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BE03C66E-EAEB-4514-9812-31E25AFB132D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE03C66E-EAEB-4514-9812-31E25AFB132D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE03C66E-EAEB-4514-9812-31E25AFB132D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D240865A-65CA-7484-56B9-49204A9CF257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D240865A-65CA-7484-56B9-49204A9CF257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D240865A-65CA-7484-56B9-49204A9CF257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D240865A-65CA-7484-56B9-49204A9CF257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
