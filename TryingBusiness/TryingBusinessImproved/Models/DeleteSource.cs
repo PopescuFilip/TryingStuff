@@ -35,7 +35,7 @@ public sealed record Extensions(ExistingDirectory ParentFolder, WildcardExtensio
 
         var wildcardExtensions = IOPath.GetFileName(path)
             .Split(' ')
-            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Where(s => !string.IsNullOrWhiteSpace(s) && s[0] =='*')
             .Select(s => new WildcardExtension(new(s)))
             .ToArray();
 
