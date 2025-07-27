@@ -1,5 +1,3 @@
-﻿using UsefullStuff.Common;
-
-namespace TryingBusinessImproved;
+﻿namespace TryingBusinessImproved;
 
 public record UsableDeleteAction(DeleteSource Source, BackupOption BackupOption);

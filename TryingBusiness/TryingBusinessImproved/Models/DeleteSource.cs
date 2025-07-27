@@ -7,6 +7,7 @@ using IOPath = System.IO.Path;
 namespace TryingBusinessImproved;
 
 public abstract record DeleteSource;
+public sealed record NonExistent : DeleteSource;
 public sealed record File(ExistingFile ExistingFile) : DeleteSource
 {
     public static bool TryCreate(string path, out File file)
@@ -42,5 +43,3 @@ public sealed record Extensions(ExistingDirectory ParentFolder, WildcardExtensio
         return true;
     }
 }
-
-public sealed record NonExistent : DeleteSource;
