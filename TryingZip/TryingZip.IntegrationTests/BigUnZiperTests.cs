@@ -41,7 +41,7 @@ public class BigUnZiperTests
 
         _bigUnZiper.UnzipAll(allFiles, sourceDirectory);
 
-        _fileUnZiper.ReceivedWithAnyArgs(count).UnZip(Arg.Any<ExistingPath>(), default);
+        _fileUnZiper.ReceivedWithAnyArgs(count).UnZip(Arg.Any<ExistingPath>(), Arg.Any<ExistingDirectory>());
         allFiles.ForEach(file => _fileUnZiper.Received().UnZip(file, sourceDirectory));
     }
 }

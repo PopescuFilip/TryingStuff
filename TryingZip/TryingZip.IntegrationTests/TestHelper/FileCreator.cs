@@ -20,7 +20,7 @@ public class FileCreator
         {
             var currentPath = basePath + i + extension;
             File.Create(currentPath).Close();
-            var newFile = new ExistingFile(currentPath);
+            var newFile = new ExistingFile((NonEmptyString)currentPath);
             _files.Add(newFile);
             yield return newFile;
         }
