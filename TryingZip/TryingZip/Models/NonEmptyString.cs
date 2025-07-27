@@ -1,6 +1,6 @@
 ﻿namespace TryingZip;
 
-public readonly record struct NonEmptyString(string Value)
+public record NonEmptyString(string Value)
 {
     public string Value { get; init; } = !string.IsNullOrWhiteSpace(Value)
         ? Value

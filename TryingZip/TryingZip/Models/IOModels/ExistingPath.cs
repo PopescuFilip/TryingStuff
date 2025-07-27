@@ -1,12 +1,10 @@
 ﻿namespace TryingZip;
 
-public readonly struct ExistingPath(string path)
+public record ExistingPath(string Path)
 {
-    private readonly NonEmptyString _path = Path.Exists(path)
-        ? new(path)
-        : throw new IOObjectCreationException("Inexistent directory or file", path);
-
-    public ExistingPath() : this(string.Empty) {}
+    private readonly NonEmptyString _path = System.IO.Path.Exists(Path)
+        ? new(Path)
+        : throw new IOObjectCreationException("Inexistent directory or file", Path);
 
     public static implicit operator string(ExistingPath e) => e._path;
 }
