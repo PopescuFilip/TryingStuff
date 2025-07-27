@@ -1,4 +1,5 @@
-﻿using UsefullStuff;
+﻿using UsefullStuff.Common;
+using UsefullStuff.IOModels;
 
 namespace TryingZip.IntegrationTests.TestHelper;
 

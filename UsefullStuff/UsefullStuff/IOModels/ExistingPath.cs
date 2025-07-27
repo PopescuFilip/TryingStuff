@@ -1,6 +1,6 @@
-﻿using UsefullStuff;
+﻿using UsefullStuff.Common;
 
-namespace TryingZip;
+namespace UsefullStuff.IOModels;
 
 public record ExistingPath(string Path)
 {

@@ -1,6 +1,6 @@
 ﻿using SimpleInjector;
 
-namespace UsefullStuff;
+namespace UsefullStuff.InjectionHelpers;
 
 public class SimpleInjectorContainerBuilder
 {

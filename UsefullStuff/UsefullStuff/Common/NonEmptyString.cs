@@ -1,4 +1,4 @@
-﻿namespace UsefullStuff;
+﻿namespace UsefullStuff.Common;
 
 public record NonEmptyString(string Value)
 {

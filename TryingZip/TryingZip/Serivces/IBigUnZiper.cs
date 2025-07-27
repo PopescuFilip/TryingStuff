@@ -1,4 +1,5 @@
-﻿namespace TryingZip;
+﻿using UsefullStuff.IOModels;
+namespace TryingZip;
 
 public interface IBigUnZiper
 {

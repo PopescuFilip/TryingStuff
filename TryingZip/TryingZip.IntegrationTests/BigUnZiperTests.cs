@@ -2,6 +2,7 @@
 using NSubstitute;
 using TryingZip.IntegrationTests.TestHelper;
 using TryingZip.Serivces;
+using UsefullStuff.IOModels;
 using static TryingZip.SupportedZipExtensions;
 
 namespace TryingZip.IntegrationTests;

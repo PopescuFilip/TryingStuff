@@ -1,4 +1,5 @@
 ﻿using System.IO.Compression;
+using UsefullStuff.IOModels;
 
 namespace TryingZip.Serivces;
 

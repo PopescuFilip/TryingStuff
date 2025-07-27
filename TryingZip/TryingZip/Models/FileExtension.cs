@@ -1,4 +1,4 @@
-﻿using UsefullStuff;
+﻿using UsefullStuff.Common;
 
 namespace TryingZip;
 

@@ -1,4 +1,4 @@
-﻿namespace TryingZip;
+﻿namespace UsefullStuff.IOModels;
 
 public class IOObjectCreationException(string message, string path) : ArgumentException(message)
 {

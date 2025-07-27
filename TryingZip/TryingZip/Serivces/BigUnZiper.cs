@@ -1,4 +1,6 @@
-﻿namespace TryingZip.Serivces;
+﻿using UsefullStuff.IOModels;
+
+namespace TryingZip.Serivces;
 
 public class BigUnZiper(IUnZiper _unZiper) : IBigUnZiper
 {

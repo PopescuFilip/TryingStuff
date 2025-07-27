@@ -1,5 +1,5 @@
 ﻿using SimpleInjector;
-using UsefullStuff;
+using UsefullStuff.InjectionHelpers;
 
 namespace TryingBusiness;
 
