@@ -1,4 +1,6 @@
-﻿namespace TryingZip;
+﻿using UsefullStuff.Common;
+
+namespace TryingZip;
 
 public static class SupportedZipExtensions
 {

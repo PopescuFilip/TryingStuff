@@ -1,6 +1,4 @@
-﻿using UsefullStuff.Common;
-
-namespace TryingZip;
+﻿namespace UsefullStuff.Common;
 
 public readonly record struct FileExtension(NonEmptyString Extension)
 {
@@ -16,6 +14,9 @@ public readonly record struct FileExtension(NonEmptyString Extension)
 
 public readonly record struct WildcardExtension(NonEmptyString Value)
 {
+    public NonEmptyString Value { get; init; } = Value[0] == '*'
+        ? Value
+        : throw new ArgumentException("Value should start with *", nameof(Value));
     public static readonly WildcardExtension Any = new(new("*"));
 
     public static implicit operator string(WildcardExtension e) => e.Value;
