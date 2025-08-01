@@ -2,11 +2,11 @@
 
 namespace UsefullStuff.IOModels;
 
-public record ExistingPath(string Path)
+public record ExistingPath(NonEmptyString Path)
 {
-    private readonly NonEmptyString _path = System.IO.Path.Exists(Path)
-        ? new(Path)
+    private readonly NonEmptyString Path = System.IO.Path.Exists(Path)
+        ? Path
         : throw new IOObjectCreationException("Inexistent directory or file", Path);
 
-    public static implicit operator string(ExistingPath e) => e._path;
+    public static implicit operator string(ExistingPath e) => e.Path;
 }
