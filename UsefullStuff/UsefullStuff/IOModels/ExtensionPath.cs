@@ -1,26 +1,25 @@
 ﻿using UsefullStuff.Common;
-using IOPath = System.IO.Path;
 
 namespace UsefullStuff.IOModels;
 
-public record ExtensionPath(DirectoryPath ParentPath, WildcardExtension[] WildcardExtensions)
+public record ExtensionPath(ExistingDirectory ParentPath, WildcardExtension[] WildcardExtensions)
 {
     public static bool TryCreate(string path, out ExtensionPath extensionPath)
     {
         extensionPath = null;
 
-        if (!NonEmptyString.TryCreate(IOPath.GetDirectoryName(path), out var parentPath))
+        if (!ExistingDirectory.TryCreate(path, out var existingDirectory))
             return false;
 
-        var wildcardExtensions = GetWildCardExtensions(parentPath);
+        var wildcardExtensions = GetWildCardExtensions(path);
         if (wildcardExtensions.Length == 0)
             return false;
 
-        extensionPath = new ExtensionPath(new(parentPath), wildcardExtensions);
+        extensionPath = new ExtensionPath(existingDirectory, wildcardExtensions);
         return true;
     }
 
-    private static WildcardExtension[] GetWildCardExtensions(string path) => IOPath.GetFileName(path)
+    private static WildcardExtension[] GetWildCardExtensions(string path) => Path.GetFileName(path)
             .Split(' ')
             .Where(s => !string.IsNullOrWhiteSpace(s) && s[0] == '*')
             .Select(s => new WildcardExtension(new(s)))

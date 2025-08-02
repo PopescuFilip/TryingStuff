@@ -9,11 +9,15 @@ public record ExistingFile(FilePath FilePath)
         ? FilePath
         : throw new IOObjectCreationException("Inexistent file", FilePath);
 
-    public static bool TryCreate(FilePath path, out ExistingFile existingFile)
+    public static bool TryCreate(string path, out ExistingFile existingFile)
     {
+        existingFile = null;
         try
         {
-            existingFile = new ExistingFile(path);
+            if (!NonEmptyString.TryCreate(path, out var nonEmptyString))
+                return false;
+
+            existingFile = new ExistingFile(new FilePath(nonEmptyString));
             return true;
         }
         catch (IOObjectCreationException)

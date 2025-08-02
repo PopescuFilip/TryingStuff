@@ -1,4 +1,5 @@
-﻿using UsefullStuff.Common;
+﻿using System.IO;
+using UsefullStuff.Common;
 
 namespace UsefullStuff.IOModels;
 
@@ -10,11 +11,16 @@ public record ExistingDirectory(DirectoryPath DirectoryPath)
 
     public string Name { get; init; } = Path.GetFileName(DirectoryPath);
 
-    public static bool TryCreate(DirectoryPath path, out ExistingDirectory existingDirectory)
+    public static bool TryCreate(string path, out ExistingDirectory existingDirectory)
     {
+        existingDirectory = null;
+
         try
         {
-            existingDirectory = new ExistingDirectory(path);
+            if (!NonEmptyString.TryCreate(Path.GetDirectoryName(path), out var parentPath))
+                return false;
+
+            existingDirectory = new ExistingDirectory(new DirectoryPath(parentPath));
             return true;
         }
         catch (IOObjectCreationException)

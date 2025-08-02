@@ -4,7 +4,7 @@ namespace UsefullStuff.IOModels;
 
 public record ExistingPath(NonEmptyString Path)
 {
-    private readonly NonEmptyString Path = System.IO.Path.Exists(Path)
+    public NonEmptyString Path { get; init; } = System.IO.Path.Exists(Path)
         ? Path
         : throw new IOObjectCreationException("Inexistent directory or file", Path);
 

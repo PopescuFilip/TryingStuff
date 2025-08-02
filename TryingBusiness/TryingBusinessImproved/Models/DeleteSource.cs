@@ -1,8 +1,4 @@
-﻿using UsefullStuff.Common;
-using UsefullStuff.IOModels;
-using IOFile = System.IO.File;
-using IODirectory = System.IO.Directory;
-using IOPath = System.IO.Path;
+﻿using UsefullStuff.IOModels;
 
 namespace TryingBusinessImproved;
 
@@ -14,12 +10,7 @@ public sealed record File(ExistingFile ExistingFile) : DeleteSource
     {
         file = null;
 
-        if (!NonEmptyString.TryCreate(path, out var nonEmptyString))
-            return false;
-
-        var filePath = new FilePath(nonEmptyString);
-
-        if (!ExistingFile.TryCreate(filePath, out var existingFile))
+        if (!ExistingFile.TryCreate(path, out var existingFile))
             return false;
 
         file = new File(existingFile);
@@ -27,23 +18,16 @@ public sealed record File(ExistingFile ExistingFile) : DeleteSource
     }
 };
 
-public sealed record Extensions(ExistingDirectory ParentFolder, WildcardExtension[] WildcardExtensions) : DeleteSource
+public sealed record Extensions(ExtensionPath ExtensionPath) : DeleteSource
 {
     public static bool TryCreate(string path, out Extensions extensions)
     {
         extensions = null;
-        var parentDirectory = IOPath.GetDirectoryName(path);
 
-        if (!IODirectory.Exists(parentDirectory))
+        if(!ExtensionPath.TryCreate(path, out var extensionPath))
             return false;
 
-        var wildcardExtensions = IOPath.GetFileName(path)
-            .Split(' ')
-            .Where(s => !string.IsNullOrWhiteSpace(s) && s[0] =='*')
-            .Select(s => new WildcardExtension(new(s)))
-            .ToArray();
-
-        extensions = new Extensions((ExistingDirectory)parentDirectory, wildcardExtensions);
+        extensions = new(extensionPath);
         return true;
     }
 }
