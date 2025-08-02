@@ -1,5 +1,4 @@
 ﻿using UsefullStuff.Common;
-using IOPath = System.IO.Path;
 
 namespace UsefullStuff.IOModels;
 
@@ -31,6 +30,4 @@ public sealed partial record ExistingFile(FilePath FilePath) : ExistingPath
     public static implicit operator NonEmptyString(ExistingFile e) => e.FilePath.Path;
     public static implicit operator FilePath(ExistingFile e) => e.FilePath;
     public static explicit operator ExistingFile(string filePath) => new(new FilePath((NonEmptyString)filePath));
-
-    public string GetName() => IOPath.GetFileNameWithoutExtension(FilePath);
 }

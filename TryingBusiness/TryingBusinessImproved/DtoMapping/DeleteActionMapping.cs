@@ -2,7 +2,7 @@
 using UsefullStuff.Common;
 using UsefullStuff.IOModels;
 
-namespace TryingBusinessImproved.Mappers;
+namespace TryingBusinessImproved.DtoMapping;
 
 public static class DeleteActionMapping
 {
