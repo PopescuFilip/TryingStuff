@@ -3,7 +3,7 @@ using IOPath = System.IO.Path;
 
 namespace UsefullStuff.IOModels;
 
-public record ExistingFile(FilePath FilePath)
+public sealed partial record ExistingFile(FilePath FilePath) : ExistingPath
 {
     public FilePath FilePath { get; init; } = File.Exists(FilePath)
         ? FilePath
@@ -30,7 +30,6 @@ public record ExistingFile(FilePath FilePath)
     public static implicit operator string(ExistingFile e) => e.FilePath.Path.Value;
     public static implicit operator NonEmptyString(ExistingFile e) => e.FilePath.Path;
     public static implicit operator FilePath(ExistingFile e) => e.FilePath;
-    public static implicit operator ExistingPath(ExistingFile e) => new(e.FilePath);
     public static explicit operator ExistingFile(string filePath) => new(new FilePath((NonEmptyString)filePath));
 
     public string GetName() => IOPath.GetFileNameWithoutExtension(FilePath);

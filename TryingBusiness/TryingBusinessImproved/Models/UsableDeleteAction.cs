@@ -1,3 +1,5 @@
-﻿namespace TryingBusinessImproved;
+﻿using UsefullStuff.IOModels;
 
-public record UsableDeleteAction(DeleteSource Source, BackupOption BackupOption);
+namespace TryingBusinessImproved;
+
+public record UsableDeleteAction(ExistingPath Source, BackupOption BackupOption);

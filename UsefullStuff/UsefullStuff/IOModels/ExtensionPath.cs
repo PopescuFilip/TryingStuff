@@ -2,7 +2,7 @@
 
 namespace UsefullStuff.IOModels;
 
-public record ExtensionPath(ExistingDirectory ParentPath, WildcardExtension[] WildcardExtensions)
+public sealed partial record ExtensionPath(ExistingDirectory ParentPath, WildcardExtension[] WildcardExtensions) : ExistingPath
 {
     public static bool TryCreate(string path, out ExtensionPath extensionPath)
     {

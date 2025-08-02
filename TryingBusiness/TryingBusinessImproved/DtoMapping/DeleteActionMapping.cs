@@ -1,4 +1,6 @@
 ﻿using TryingBusinessImproved.DTOs;
+using UsefullStuff.Common;
+using UsefullStuff.IOModels;
 
 namespace TryingBusinessImproved.Mappers;
 
@@ -8,14 +10,14 @@ public static class DeleteActionMapping
         new(deleteAction.GetDeleteSource(), deleteAction.GetBackupOption());
 
     public static BackupOption GetBackupOption(this DeleteAction deleteAction) =>
-        string.IsNullOrWhiteSpace(deleteAction.BackupPath)
-        ? new Backup(new(deleteAction.BackupPath))
+        NonEmptyString.TryCreate(deleteAction.BackupPath, out var nonEmptyString)
+        ? new Backup(new(nonEmptyString))
         : new NoBackup();
 
-    public static DeleteSource GetDeleteSource(this DeleteAction deleteAction) =>
-        File.TryCreate(deleteAction.SourcePath, out var file)
+    public static ExistingPath GetDeleteSource(this DeleteAction deleteAction) =>
+        ExistingFile.TryCreate(deleteAction.SourcePath, out var file)
         ? file
-        : Extensions.TryCreate(deleteAction.SourcePath, out var extensions)
+        : ExtensionPath.TryCreate(deleteAction.SourcePath, out var extensions)
         ? extensions
-        : new NonExistent();
+        : ExistingPath.NoPath;
 }

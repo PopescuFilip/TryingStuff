@@ -1,9 +1,8 @@
-﻿using System.IO;
-using UsefullStuff.Common;
+﻿using UsefullStuff.Common;
 
 namespace UsefullStuff.IOModels;
 
-public record ExistingDirectory(DirectoryPath DirectoryPath)
+public sealed partial record ExistingDirectory(DirectoryPath DirectoryPath) : ExistingPath
 {
     public DirectoryPath DirectoryPath { get; init; } = Directory.Exists(DirectoryPath)
         ? DirectoryPath

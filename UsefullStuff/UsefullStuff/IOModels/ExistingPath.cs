@@ -1,12 +1,12 @@
-﻿using UsefullStuff.Common;
+﻿namespace UsefullStuff.IOModels;
 
-namespace UsefullStuff.IOModels;
-
-public record ExistingPath(NonEmptyString Path)
+public abstract record ExistingPath
 {
-    public NonEmptyString Path { get; init; } = System.IO.Path.Exists(Path)
-        ? Path
-        : throw new IOObjectCreationException("Inexistent directory or file", Path);
+    public static readonly NoPath NoPath = new();
+};
 
-    public static implicit operator string(ExistingPath e) => e.Path;
-}
+public sealed record NoPath : ExistingPath { internal NoPath() {} }
+
+public sealed partial record ExistingFile : ExistingPath;
+public sealed partial record ExistingDirectory : ExistingPath;
+public sealed partial record ExtensionPath : ExistingPath;
