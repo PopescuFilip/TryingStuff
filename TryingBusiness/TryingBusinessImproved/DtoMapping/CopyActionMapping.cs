@@ -8,7 +8,7 @@ public static class CopyActionMapping
     public static UsableCopyAction ToUsableCopyAction(this CopyAction copyAction) =>
         new(copyAction.GetSourceExistingPath(), (DirectoryPath)copyAction.DestinationPath);
 
-    public static ExistingPath GetSourceExistingPath(this CopyAction copyAction) =>
+    private static ExistingPath GetSourceExistingPath(this CopyAction copyAction) =>
         ExistingFile.TryCreate(copyAction.SourcePath, out var existingFile)
         ? existingFile
         : ExistingDirectory.TryCreate(copyAction.SourcePath, out var existingDirectory)
