@@ -24,7 +24,8 @@ public record ExistingDirectory(DirectoryPath DirectoryPath)
         }
     }
 
-    public static implicit operator string(ExistingDirectory e) => e.DirectoryPath;
-    public static implicit operator NonEmptyString(ExistingDirectory e) => e.DirectoryPath;
+    public static implicit operator string(ExistingDirectory e) => e.DirectoryPath.Path.Value;
+    public static implicit operator NonEmptyString(ExistingDirectory e) => e.DirectoryPath.Path;
+    public static implicit operator DirectoryPath(ExistingDirectory e) => e.DirectoryPath;
     public static explicit operator ExistingDirectory(string @string) => new(new DirectoryPath((NonEmptyString)@string));
 }

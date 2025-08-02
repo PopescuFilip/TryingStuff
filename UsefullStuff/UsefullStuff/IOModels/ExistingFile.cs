@@ -3,11 +3,11 @@ using IOPath = System.IO.Path;
 
 namespace UsefullStuff.IOModels;
 
-public record ExistingFile(FilePath Path)
+public record ExistingFile(FilePath FilePath)
 {
-    public FilePath Path { get; init; } = File.Exists(Path)
-        ? Path
-        : throw new IOObjectCreationException("Inexistent file", Path);
+    public FilePath FilePath { get; init; } = File.Exists(FilePath)
+        ? FilePath
+        : throw new IOObjectCreationException("Inexistent file", FilePath);
 
     public static bool TryCreate(FilePath path, out ExistingFile existingFile)
     {
@@ -23,11 +23,11 @@ public record ExistingFile(FilePath Path)
         }
     }
 
-    public static implicit operator string(ExistingFile e) => e.Path;
-    public static implicit operator NonEmptyString(ExistingFile e) => e.Path;
-    public static implicit operator FilePath(ExistingFile e) => e.Path;
-    public static implicit operator ExistingPath(ExistingFile e) => new(e.Path);
+    public static implicit operator string(ExistingFile e) => e.FilePath.Path.Value;
+    public static implicit operator NonEmptyString(ExistingFile e) => e.FilePath.Path;
+    public static implicit operator FilePath(ExistingFile e) => e.FilePath;
+    public static implicit operator ExistingPath(ExistingFile e) => new(e.FilePath);
     public static explicit operator ExistingFile(string filePath) => new(new FilePath((NonEmptyString)filePath));
 
-    public string GetName() => IOPath.GetFileNameWithoutExtension(Path);
+    public string GetName() => IOPath.GetFileNameWithoutExtension(FilePath);
 }

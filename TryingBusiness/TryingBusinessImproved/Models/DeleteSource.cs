@@ -12,14 +12,18 @@ public sealed record File(ExistingFile ExistingFile) : DeleteSource
 {
     public static bool TryCreate(string path, out File file)
     {
-        if (IOFile.Exists(path))
-        {
-            file = new File((ExistingFile)path);
-            return true;
-        }
-
         file = null;
-        return false;
+
+        if (!NonEmptyString.TryCreate(path, out var nonEmptyString))
+            return false;
+
+        var filePath = new FilePath(nonEmptyString);
+
+        if (!ExistingFile.TryCreate(filePath, out var existingFile))
+            return false;
+
+        file = new File(existingFile);
+        return true;
     }
 };
 
