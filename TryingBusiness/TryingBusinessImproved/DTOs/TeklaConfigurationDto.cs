@@ -1,4 +1,4 @@
-﻿namespace TryingBusinessImproved;
+﻿namespace TryingBusinessImproved.DTOs;
 
 public class TeklaConfigurationDto
 {

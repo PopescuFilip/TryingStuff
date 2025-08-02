@@ -1,4 +1,6 @@
-﻿namespace TryingBusinessImproved.Mappers;
+﻿using TryingBusinessImproved.DTOs;
+
+namespace TryingBusinessImproved.Mappers;
 
 public static class DeleteActionMapping
 {

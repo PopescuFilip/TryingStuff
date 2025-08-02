@@ -1,4 +1,4 @@
-﻿namespace TryingBusinessImproved;
+﻿namespace TryingBusinessImproved.DTOs;
 
 public abstract record FileAction(string FilePath, bool IsEnabled);
 public sealed record DeleteAction(string SourcePath, bool IsEnabled, string BackupPath) : FileAction(SourcePath, IsEnabled);
