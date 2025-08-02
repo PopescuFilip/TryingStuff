@@ -7,8 +7,8 @@ public static class TeklaConfigurationMapping
 {
     public static UsableTeklaConfiguration ToUsableTeklaConfiguration(this TeklaConfigurationDto dto) =>
         new(
-            dto.DeleteActions.Where(d => IsEnabled(d)).Select(d => d.ToUsableDeleteAction()),
-            dto.CopyActions.Where(c => IsEnabled(c)).Select(c => c.ToUsableCopyAction()),
-            dto.ThirdPartyActions.Where(r => IsEnabled(r)).Select(r => r.ToUsableThirdPartyAction())
+            dto.DeleteActions.Where(IsEnabled).Select(d => d.ToUsableDeleteAction()),
+            dto.CopyActions.Where(IsEnabled).Select(c => c.ToUsableCopyAction()),
+            dto.ThirdPartyActions.Where(IsEnabled).Select(r => r.ToUsableThirdPartyAction())
             );
 }
