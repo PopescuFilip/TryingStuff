@@ -9,7 +9,7 @@ public class SevenZUnZiper : IUnZiper
 {
     public void UnZip(ExistingPath pathToZip, ExistingDirectory destinationDirectory)
     {
-        using var archive = SevenZipArchive.Open(pathToZip);
+        using var archive = SevenZipArchive.Open(pathToZip.MapToString());
         foreach (var entry in archive.Entries)
         {
             entry.WriteToDirectory(destinationDirectory, new ExtractionOptions

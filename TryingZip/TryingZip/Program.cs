@@ -14,8 +14,8 @@ public class Program
         var bigUnZiper = container.GetInstance<IBigUnZiper>();
 
         var desktop = Path.Combine("C:", "Users", $"{Environment.GetEnvironmentVariable("Username")}", "Desktop");
-        var source = ExistingDirectory.Create(Path.Combine(desktop, "Source"));
-        var destination = ExistingDirectory.Create(Path.Combine(desktop, "FolderDesktop"));
+        var source = Path.Combine(desktop, "Source").CreateDirectory();
+        var destination = Path.Combine(desktop, "FolderDesktop").CreateDirectory();
 
         var zipFiles = GetAllWithExtension(source, SupportedZipExtensions.SevenZ);
         bigUnZiper.UnzipAll(zipFiles, destination);
@@ -23,7 +23,8 @@ public class Program
 
     public static List<ExistingPath> GetAllWithExtension(ExistingDirectory existingDirectory, FileExtension extension) =>
         Directory.EnumerateFiles(existingDirectory, extension.WildcardExtension, SearchOption.AllDirectories)
-        .Select(f => new ExistingPath(f))
+        .Select(f => (ExistingFile)f)
+        .Select(f => (ExistingPath)f)
         .ToList();
 
     public static Container RegisterAll() =>

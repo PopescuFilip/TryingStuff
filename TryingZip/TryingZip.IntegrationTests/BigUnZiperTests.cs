@@ -34,7 +34,7 @@ public class BigUnZiperTests
     [TestMethod]
     public void UnZipAll_ShouldCallAppropriateFunction_WhenCalled()
     {
-        var sourceDirectory = ExistingDirectory.Create(_source);
+        var sourceDirectory = _source.CreateDirectory();
         var count = 100;
         var allFiles = _fileCreator.CreateFiles(SevenZ, count)
             .Select(f => (ExistingPath)f)

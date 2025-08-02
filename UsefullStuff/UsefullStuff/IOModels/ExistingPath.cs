@@ -13,6 +13,28 @@ public sealed partial record ExtensionPath : ExistingPath;
 
 public static class ExistingPathExtensions
 {
+    public static string MapToString(this ExistingPath value) =>
+        value.Map(
+            (existingFile) => existingFile,
+            (existingDirectory) => existingDirectory,
+            (extensionPath) => extensionPath.ParentPath,
+            (noPath) => string.Empty
+            );
+
+    public static T Map<T>(
+        this ExistingPath value,
+        Func<ExistingFile, T> mapExistingFile,
+        Func<ExistingDirectory, T> mapExistingDirectory,
+        Func<ExtensionPath, T> mapExtensionPath,
+        Func<NoPath, T> mapNoPath) => value switch
+        {
+            ExistingFile existingFile => mapExistingFile(existingFile),
+            ExistingDirectory existingDirectory => mapExistingDirectory(existingDirectory),
+            ExtensionPath extensionPath => mapExtensionPath(extensionPath),
+            NoPath noPath => mapNoPath(noPath),
+            _ => throw new ArgumentException($"{value} is not a supported type", nameof(value))
+        };
+
     public static void Match(
         this ExistingPath value,
         Action<ExistingFile> onExistingFile,
