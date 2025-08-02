@@ -1,6 +1,6 @@
 ﻿namespace TryingBusinessImproved.Mappers;
 
-public static class DtoToUsableExtensions
+public static class DeleteActionMapping
 {
     public static UsableDeleteAction ToUsableDeleteAction(this DeleteAction deleteAction) =>
         new(deleteAction.GetDeleteSource(), deleteAction.GetBackupOption());
