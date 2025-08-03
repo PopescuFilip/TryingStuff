@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\UsefullStuff\UsefullStuff\UsefullStuff.csproj" />
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
+    <ProjectReference Include="..\..\UsefullStuff\UsefullStuff\UsefullStuff.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ namespace TryingBusinessImproved;
 
 public record UsableThirdPartyAction(ExistingFile Executable)
 {
-    public readonly FileExtension[] SupportedFileExtensions =
+    public static readonly FileExtension[] SupportedFileExtensions =
     [
         new((NonEmptyString)"exe")
     ];
